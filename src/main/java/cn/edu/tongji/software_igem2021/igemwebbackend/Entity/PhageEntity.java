@@ -4,6 +4,12 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@NamedStoredProcedureQuery(name = "PhageEntity.getTaxonIdOfName",
+        procedureName = "bacteria_taxon_id_of_name",
+        parameters = {
+                @StoredProcedureParameter(mode = ParameterMode.IN, name = "s", type = String.class)
+        }
+)
 @Table(name = "phage", schema = "iGEM_database", catalog = "")
 public class PhageEntity {
     private String seqId;
