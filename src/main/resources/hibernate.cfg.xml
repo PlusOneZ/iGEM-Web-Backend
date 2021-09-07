@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url">jdbc:mysql://47.100.225.207:13306/iGEM_database</property>
+    <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+    <mapping class="cn.edu.tongji.software_igem2021.igemwebbackend.Entity.BacteriaEntity"/>
+      <mapping class="cn.edu.tongji.software_igem2021.igemwebbackend.Entity.BacteriaSpacerEntity"/>
+      <mapping class="cn.edu.tongji.software_igem2021.igemwebbackend.Entity.BacteriaTaxonEntity"/>
+      <mapping class="cn.edu.tongji.software_igem2021.igemwebbackend.Entity.PhageEntity"/>
+      <mapping class="cn.edu.tongji.software_igem2021.igemwebbackend.Entity.ResultEntity"/>
+    <mapping class="cn.edu.tongji.software_igem2021.igemwebbackend.Entity.BacteriaPhageScoreEntity"/>
+    <mapping class="cn.edu.tongji.software_igem2021.igemwebbackend.Entity.CommentEntity"/>
+    <!-- <property name="connection.username"/> -->
+    <!-- <property name="connection.password"/> -->
+
+    <!-- DB schema will be updated if needed -->
+    <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+  </session-factory>
+</hibernate-configuration>
