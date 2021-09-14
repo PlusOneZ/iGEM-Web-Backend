@@ -20,8 +20,8 @@ public class CommentBoard {
     public int addComment(@RequestBody Comment comment, HttpServletResponse response) {
         System.out.println(comment);
         if (
-                comment.getFirstname().length() <= 10 && comment.getFirstname().length() > 0 &&
-                comment.getLastname().length() <= 10 && comment.getLastname().length() > 0 &&
+                comment.getFirstname().length() <= 20 && comment.getFirstname().length() > 0 &&
+                comment.getLastname().length() <= 20 && comment.getLastname().length() > 0 &&
                 comment.getContent().length() <= 512 && comment.getContent().length() > 0
         ) {
             CommentEntity commentEntity = new CommentEntity();
@@ -41,7 +41,7 @@ public class CommentBoard {
     @RequestMapping(value = "/getall", method = RequestMethod.GET)
     @ResponseBody
     public List<CommentEntity> getAllComments() {
-        return commentRepository.findAll();
+        return commentRepository.getCommentEntitiesByIdIsNotOrderByTimeDesc(-1);
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)

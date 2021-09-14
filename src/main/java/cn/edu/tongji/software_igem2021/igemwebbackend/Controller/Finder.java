@@ -56,7 +56,7 @@ public class Finder {
             System.out.println(e);
         }
         System.out.println(result);
-        return result;
+        return result.subList(0, Math.min(result.size(), 500));
     }
 
     @RequestMapping(value = "/search/phage", method = RequestMethod.GET)
@@ -87,7 +87,7 @@ public class Finder {
         }
 
         System.out.println(result);
-        return result;
+        return result.subList(0, Math.min(result.size(), 500));
     }
 
 }
