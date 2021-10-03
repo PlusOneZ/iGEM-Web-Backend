@@ -6,30 +6,30 @@ import java.util.Objects;
 @Entity
 @Table(name = "super_bug", schema = "iGEM_database", catalog = "")
 public class SuperBugEntity {
-    private String seqNcbiId;
-    private String genebankId;
+    private String bugSeqId;
+    private String bugId;
     private Integer txid;
     private String txidRank;
     private String name;
 
     @Id
-    @Column(name = "seq_ncbi_id")
-    public String getSeqNcbiId() {
-        return seqNcbiId;
+    @Column(name = "bug_seq_id")
+    public String getBugSeqId() {
+        return bugSeqId;
     }
 
-    public void setSeqNcbiId(String seqNcbiId) {
-        this.seqNcbiId = seqNcbiId;
+    public void setBugSeqId(String bugSeqId) {
+        this.bugSeqId = bugSeqId;
     }
 
     @Basic
-    @Column(name = "genebank_id")
-    public String getGenebankId() {
-        return genebankId;
+    @Column(name = "bug_id")
+    public String getBugId() {
+        return bugId;
     }
 
-    public void setGenebankId(String genebankId) {
-        this.genebankId = genebankId;
+    public void setBugId(String bugId) {
+        this.bugId = bugId;
     }
 
     @Basic
@@ -67,11 +67,11 @@ public class SuperBugEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SuperBugEntity that = (SuperBugEntity) o;
-        return Objects.equals(seqNcbiId, that.seqNcbiId) && Objects.equals(genebankId, that.genebankId) && Objects.equals(txid, that.txid) && Objects.equals(txidRank, that.txidRank) && Objects.equals(name, that.name);
+        return Objects.equals(bugSeqId, that.bugSeqId) && Objects.equals(bugId, that.bugId) && Objects.equals(txid, that.txid) && Objects.equals(txidRank, that.txidRank) && Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(seqNcbiId, genebankId, txid, txidRank, name);
+        return Objects.hash(bugSeqId, bugId, txid, txidRank, name);
     }
 }

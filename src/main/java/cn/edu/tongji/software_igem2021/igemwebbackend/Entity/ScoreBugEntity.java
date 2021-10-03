@@ -7,7 +7,7 @@ import java.util.Objects;
 @Table(name = "score_bug", schema = "iGEM_database", catalog = "")
 @IdClass(ScoreBugEntityPK.class)
 public class ScoreBugEntity {
-    private String seqNcbiId;
+    private String bugSeqId;
     private String phageId;
     private Integer phageClusterId;
     private Double firstScore;
@@ -16,13 +16,13 @@ public class ScoreBugEntity {
     private Double score;
 
     @Id
-    @Column(name = "seq_ncbi_id")
-    public String getSeqNcbiId() {
-        return seqNcbiId;
+    @Column(name = "bug_seq_id")
+    public String getBugSeqId() {
+        return bugSeqId;
     }
 
-    public void setSeqNcbiId(String seqNcbiId) {
-        this.seqNcbiId = seqNcbiId;
+    public void setBugSeqId(String bugSeqId) {
+        this.bugSeqId = bugSeqId;
     }
 
     @Id
@@ -90,11 +90,11 @@ public class ScoreBugEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ScoreBugEntity that = (ScoreBugEntity) o;
-        return Objects.equals(seqNcbiId, that.seqNcbiId) && Objects.equals(phageId, that.phageId) && Objects.equals(phageClusterId, that.phageClusterId) && Objects.equals(firstScore, that.firstScore) && Objects.equals(secondScore, that.secondScore) && Objects.equals(thirdScore, that.thirdScore) && Objects.equals(score, that.score);
+        return Objects.equals(bugSeqId, that.bugSeqId) && Objects.equals(phageId, that.phageId) && Objects.equals(phageClusterId, that.phageClusterId) && Objects.equals(firstScore, that.firstScore) && Objects.equals(secondScore, that.secondScore) && Objects.equals(thirdScore, that.thirdScore) && Objects.equals(score, that.score);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(seqNcbiId, phageId, phageClusterId, firstScore, secondScore, thirdScore, score);
+        return Objects.hash(bugSeqId, phageId, phageClusterId, firstScore, secondScore, thirdScore, score);
     }
 }

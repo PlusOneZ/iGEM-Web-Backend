@@ -14,8 +14,6 @@
     <mapping class="cn.edu.tongji.software_igem2021.igemwebbackend.Entity.BacteriaPhageScoreEntity"/>
     <mapping class="cn.edu.tongji.software_igem2021.igemwebbackend.Entity.CommentEntity"/>
       <mapping class="cn.edu.tongji.software_igem2021.igemwebbackend.Entity.PhageBugEntity"/>
-      <mapping class="cn.edu.tongji.software_igem2021.igemwebbackend.Entity.ScoreBugEntity"/>
-      <mapping class="cn.edu.tongji.software_igem2021.igemwebbackend.Entity.SuperBugEntity"/>
       <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 

@@ -6,17 +6,17 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class ScoreBugEntityPK implements Serializable {
-    private String seqNcbiId;
+    private String bugSeqId;
     private String phageId;
 
-    @Column(name = "seq_ncbi_id")
+    @Column(name = "bug_seq_id")
     @Id
-    public String getSeqNcbiId() {
-        return seqNcbiId;
+    public String getBugSeqId() {
+        return bugSeqId;
     }
 
-    public void setSeqNcbiId(String seqNcbiId) {
-        this.seqNcbiId = seqNcbiId;
+    public void setBugSeqId(String bugSeqId) {
+        this.bugSeqId = bugSeqId;
     }
 
     @Column(name = "phage_id")
@@ -34,11 +34,11 @@ public class ScoreBugEntityPK implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ScoreBugEntityPK that = (ScoreBugEntityPK) o;
-        return Objects.equals(seqNcbiId, that.seqNcbiId) && Objects.equals(phageId, that.phageId);
+        return Objects.equals(bugSeqId, that.bugSeqId) && Objects.equals(phageId, that.phageId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(seqNcbiId, phageId);
+        return Objects.hash(bugSeqId, phageId);
     }
 }
