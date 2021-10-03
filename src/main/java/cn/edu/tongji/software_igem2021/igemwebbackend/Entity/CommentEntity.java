@@ -14,7 +14,7 @@ public class CommentEntity {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // TODO: test this
     public int getId() {
         return id;
     }

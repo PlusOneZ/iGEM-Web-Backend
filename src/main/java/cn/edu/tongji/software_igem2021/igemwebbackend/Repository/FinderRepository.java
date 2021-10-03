@@ -1,15 +1,12 @@
 package cn.edu.tongji.software_igem2021.igemwebbackend.Repository;
 
-import cn.edu.tongji.software_igem2021.igemwebbackend.Entity.BacteriaPhageScoreEntity;
-import cn.edu.tongji.software_igem2021.igemwebbackend.Entity.BacteriaPhageScoreEntityPK;
+import cn.edu.tongji.software_igem2021.igemwebbackend.Entity.ScoreWithNameEntity;
+import cn.edu.tongji.software_igem2021.igemwebbackend.Entity.ScoreWithNameEntityPK;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-import java.util.List;
-
-public interface FinderRepository extends JpaRepository<BacteriaPhageScoreEntity, BacteriaPhageScoreEntityPK> {
-    public List<BacteriaPhageScoreEntity> findAllByBacteriaTxidOrderByScoreDesc(int bacId);
-
-    public List<BacteriaPhageScoreEntity> findAllByPhageTxidOrderByScoreDesc(int phageId);
-
+public interface FinderRepository
+        extends JpaRepository<ScoreWithNameEntity, ScoreWithNameEntityPK>,
+        JpaSpecificationExecutor<ScoreWithNameEntity> {
 
 }
