@@ -21,7 +21,6 @@ public class FinderService {
     FinderRepository finderRepository;
 
     public List<ScoreWithNameEntity> searchForAll(String key) {
-        System.out.println(finderRepository);
 
         Specification<ScoreWithNameEntity> spec = (root, criteriaQuery, criteriaBuilder) -> {
             ArrayList<Predicate> list = new ArrayList<>();
@@ -47,26 +46,24 @@ public class FinderService {
     }
 
     public List<ScoreWithNameEntity> searchForBacteria(String key) {
-        return finderRepository.findAll(new Specification<ScoreWithNameEntity>() {
-            @Override
-            public Predicate toPredicate(Root<ScoreWithNameEntity> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
-                ArrayList<Predicate> list = new ArrayList<>();
-                if (!Objects.equals(key, "") && key != null) {
-                    Predicate bac_id = criteriaBuilder.like(root.get("genebankId").as(String.class), key);
-                    Predicate bac_name = criteriaBuilder.like(root.get("name").as(String.class), "%" + key + "%");
-                    Predicate bac_txid = criteriaBuilder.equal(root.get("bacteriaTxid").as(String.class), key);
+        return finderRepository.findAll(
+                (Specification<ScoreWithNameEntity>) (root, criteriaQuery, criteriaBuilder) -> {
+                    ArrayList<Predicate> list = new ArrayList<>();
+                    if (!Objects.equals(key, "") && key != null) {
+                        Predicate bac_id = criteriaBuilder.like(root.get("genebankId").as(String.class), key);
+                        Predicate bac_name = criteriaBuilder.like(root.get("name").as(String.class), "%" + key + "%");
+                        Predicate bac_txid = criteriaBuilder.equal(root.get("bacteriaTxid").as(String.class), key);
 
-                    list.add(bac_id);
-                    list.add(bac_name);
-                    list.add(bac_txid);
-                }
+                        list.add(bac_id);
+                        list.add(bac_name);
+                        list.add(bac_txid);
+                    }
 
-                Predicate[] array = new Predicate[list.size()];
-                Predicate[] predicates = list.toArray(array);
+                    Predicate[] array = new Predicate[list.size()];
+                    Predicate[] predicates = list.toArray(array);
 
-                return criteriaBuilder.or(predicates);
-            }
-        });
+                    return criteriaBuilder.or(predicates);
+                });
     }
 
     public List<ScoreWithNameEntity> searchForPhage(String key) {
