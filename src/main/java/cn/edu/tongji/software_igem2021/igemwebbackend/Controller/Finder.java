@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/api")
+@RequestMapping("/api/search")
 public class Finder {
 
     @Autowired
@@ -24,21 +24,21 @@ public class Finder {
     @Resource
     FinderRepository finderRepository;
 
-    @RequestMapping(value = "/search/bacteria", method = RequestMethod.GET)
+    @RequestMapping(value = "/bacteria", method = RequestMethod.GET)
     @ResponseBody
     public List<ScoreWithNameEntity> getBacteriaSearchResult(@RequestParam(name = "key") String key) {
-        List<ScoreWithNameEntity> result = finderService.searchForBacteria(key).subList(0, 501);
+        List<ScoreWithNameEntity> result = finderService.searchForBacteria(key);
         return result.subList(0, Math.min(result.size() - 1, 501));
     }
 
-    @RequestMapping(value = "/search/phage", method = RequestMethod.GET)
+    @RequestMapping(value = "/phage", method = RequestMethod.GET)
     @ResponseBody
     public List<ScoreWithNameEntity> getPhageSearchResult(@RequestParam(name = "key") String key) {
-        List<ScoreWithNameEntity> result = finderService.searchForPhage(key).subList(0, 501);
+        List<ScoreWithNameEntity> result = finderService.searchForPhage(key);
         return result.subList(0, Math.min(result.size() - 1, 501));
     }
 
-    @RequestMapping(value = "/search/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
     public List<ScoreWithNameEntity> getAllSearchResult(@RequestParam(name = "key") String key) {
         System.out.println(finderRepository);
@@ -49,4 +49,5 @@ public class Finder {
         List<ScoreWithNameEntity> result = finderService.searchForAll(key);
         return result.subList(0, Math.min(result.size() - 1, 501));
     }
+
 }

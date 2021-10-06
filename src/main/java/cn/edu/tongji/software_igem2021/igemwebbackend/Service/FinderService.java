@@ -2,7 +2,6 @@ package cn.edu.tongji.software_igem2021.igemwebbackend.Service;
 
 import cn.edu.tongji.software_igem2021.igemwebbackend.Entity.ScoreWithNameEntity;
 import cn.edu.tongji.software_igem2021.igemwebbackend.Repository.FinderRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -52,7 +51,7 @@ public class FinderService {
                     if (!Objects.equals(key, "") && key != null) {
                         Predicate bac_id = criteriaBuilder.like(root.get("genebankId").as(String.class), key);
                         Predicate bac_name = criteriaBuilder.like(root.get("name").as(String.class), "%" + key + "%");
-                        Predicate bac_txid = criteriaBuilder.equal(root.get("bacteriaTxid").as(String.class), key);
+                        Predicate bac_txid = criteriaBuilder.like(root.get("bacteriaTxid").as(String.class), key);
 
                         list.add(bac_id);
                         list.add(bac_name);
@@ -74,7 +73,7 @@ public class FinderService {
                 if (!Objects.equals(key, "") && key != null) {
                     Predicate phage_id = criteriaBuilder.like(root.get("phageId").as(String.class), key);
                     Predicate phage_name = criteriaBuilder.like(root.get("scientificName").as(String.class), "%" + key + "%");
-                    Predicate phage_txid = criteriaBuilder.equal(root.get("scientificName").as(String.class), key);
+                    Predicate phage_txid = criteriaBuilder.like(root.get("scientificName").as(String.class), key);
 
                     list.add(phage_id);
                     list.add(phage_name);
