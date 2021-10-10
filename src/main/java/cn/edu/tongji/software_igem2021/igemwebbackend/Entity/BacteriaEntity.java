@@ -11,6 +11,7 @@ public class BacteriaEntity {
     private String name;
     private Integer seqLength;
     private String seqNcbiId;
+    private Integer taxonId;
 
     @Id
     @Column(name = "genebank_id")
@@ -61,6 +62,12 @@ public class BacteriaEntity {
     public void setSeqNcbiId(String seqNcbiId) {
         this.seqNcbiId = seqNcbiId;
     }
+
+    @Basic
+    @Column(name = "taxon_id")
+    public Integer getTaxonId() {return taxonId;}
+
+    public void setTaxonId(Integer taxonId) { this.taxonId = taxonId; }
 
     @Override
     public boolean equals(Object o) {

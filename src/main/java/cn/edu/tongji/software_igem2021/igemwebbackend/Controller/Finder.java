@@ -1,5 +1,6 @@
 package cn.edu.tongji.software_igem2021.igemwebbackend.Controller;
 
+import cn.edu.tongji.software_igem2021.igemwebbackend.DTO.BacAndPhageInfo;
 import cn.edu.tongji.software_igem2021.igemwebbackend.Entity.ScoreWithNameEntity;
 import cn.edu.tongji.software_igem2021.igemwebbackend.Repository.FinderRepository;
 import cn.edu.tongji.software_igem2021.igemwebbackend.Service.FinderService;
@@ -28,14 +29,14 @@ public class Finder {
     @ResponseBody
     public List<ScoreWithNameEntity> getBacteriaSearchResult(@RequestParam(name = "key") String key) {
         List<ScoreWithNameEntity> result = finderService.searchForBacteria(key);
-        return result.subList(0, Math.min(result.size() - 1, 501));
+        return result.subList(0, Math.min(result.size(), 501));
     }
 
     @RequestMapping(value = "/phage", method = RequestMethod.GET)
     @ResponseBody
     public List<ScoreWithNameEntity> getPhageSearchResult(@RequestParam(name = "key") String key) {
         List<ScoreWithNameEntity> result = finderService.searchForPhage(key);
-        return result.subList(0, Math.min(result.size() - 1, 501));
+        return result.subList(0, Math.min(result.size(), 501));
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
@@ -43,11 +44,29 @@ public class Finder {
     public List<ScoreWithNameEntity> getAllSearchResult(@RequestParam(name = "key") String key) {
         System.out.println(finderRepository);
         System.out.println(key);
+        System.out.println(key);
         if (key.length() <= 3) {
             return new ArrayList();
         }
         List<ScoreWithNameEntity> result = finderService.searchForAll(key);
-        return result.subList(0, Math.min(result.size() - 1, 501));
+        return result.subList(0, Math.min(result.size(), 501));
     }
 
+    @RequestMapping(value = "/bacteria/suggestion", method = RequestMethod.GET)
+    @ResponseBody
+    public List<BacAndPhageInfo> getBacteriaSearchSuggestion(String key, int pageNum) {
+        return finderService.querySuggestionForBacteria(key, pageNum);
+    }
+
+    @RequestMapping(value = "/phage/suggestion", method = RequestMethod.GET)
+    @ResponseBody
+    public List<BacAndPhageInfo> getPhageSearchSuggestion(String key, int pageNum) {
+        return finderService.querySuggestionForPhage(key, pageNum);
+    }
+
+    @RequestMapping(value = "/all/suggestion", method = RequestMethod.GET)
+    @ResponseBody
+    public List<BacAndPhageInfo> getAllSearchSuggestion(String key, int pageNum) {
+        return finderService.querySuggestionForAll(key, pageNum);
+    }
 }
